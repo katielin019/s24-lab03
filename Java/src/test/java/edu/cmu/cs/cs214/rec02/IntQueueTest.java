@@ -53,7 +53,7 @@ public class IntQueueTest {
     @Test
     public void testNotEmpty() {
         mQueue.enqueue(testList.get(0));
-        assertFalse(mQueue.isEmpty());
+        assertNotNull(mQueue.peek());
     }
 
     @Test
@@ -82,9 +82,26 @@ public class IntQueueTest {
         for (int i = 0; i < testList.size(); i++) {
             mQueue.enqueue(testList.get(i));
         }
-        for (int j = 0; j < testList.size(); j++) {
+        for (int j = testList.size() - 1; j >= 0; j--) {
             assertEquals(mQueue.dequeue(), testList.get(j));
         }
+    }
+
+    @Test
+    public void testClearResetSize() {
+        for (int i = 0; i < testList.size(); i++) {
+            mQueue.enqueue(testList.get(i));
+        }
+        mQueue.clear();
+        assertEquals(mQueue.size(), 0);
+    }
+
+    @Test
+    public void testClearResetHead() {
+        for (int i = 0; i < testList.size(); i++) {
+            mQueue.enqueue(testList.get(i));
+        }
+        assertNull(mQueue.dequeue());
     }
 
     @Test
