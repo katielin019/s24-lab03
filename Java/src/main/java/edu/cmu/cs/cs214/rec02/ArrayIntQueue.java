@@ -73,12 +73,15 @@ public class ArrayIntQueue implements IntQueue {
 
     /** {@inheritDoc} */
     public boolean isEmpty() {
-        return size >= 0;
+        return size == 0; // fixed bug here
     }
 
     /** {@inheritDoc} */
     public Integer peek() {
-        return elementData[head];
+        if (size == 0) {
+            return null;
+        }
+        return elementData[head]; // fixed bug w/ above code
     }
 
     /** {@inheritDoc} */

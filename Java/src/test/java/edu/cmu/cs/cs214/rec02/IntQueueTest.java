@@ -82,24 +82,8 @@ public class IntQueueTest {
         for (int i = 0; i < testList.size(); i++) {
             mQueue.enqueue(testList.get(i));
         }
-        for (int j = testList.size() - 1; j >= 0; j--) {
+        for (int j = 0; j < testList.size(); j++) {
             assertEquals(mQueue.dequeue(), testList.get(j));
-        }
-    }
-
-    @Test
-    public void testClearResetSize() {
-        for (int i = 0; i < testList.size(); i++) {
-            mQueue.enqueue(testList.get(i));
-        }
-        mQueue.clear();
-        assertEquals(mQueue.size(), 0);
-    }
-
-    @Test
-    public void testClearResetHead() {
-        for (int i = 0; i < testList.size(); i++) {
-            mQueue.enqueue(testList.get(i));
         }
         assertNull(mQueue.dequeue());
     }
@@ -125,5 +109,15 @@ public class IntQueueTest {
         }
     }
 
+    // Structural test for ArrayIntQueue
+    @Test
+    public void testClearStructural() {
+        for (int i = 0; i < testList.size(); i++) {
+            mQueue.enqueue(testList.get(i));
+        }
+        assertFalse(mQueue.isEmpty());
+        mQueue.clear();
+        assertEquals(mQueue.size(), 0);
+    }
 
 }
