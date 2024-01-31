@@ -111,6 +111,14 @@ public class IntQueueTest {
 
     // Structural test for ArrayIntQueue
     @Test
+    public void testIsEmptyStructural() {
+        assertTrue(mQueue.isEmpty());
+        mQueue.enqueue(testList.get(0));
+        assertFalse(mQueue.isEmpty());
+    }
+
+    // Structural test for ArrayIntQueue
+    @Test
     public void testClearStructural() {
         for (int i = 0; i < testList.size(); i++) {
             mQueue.enqueue(testList.get(i));
