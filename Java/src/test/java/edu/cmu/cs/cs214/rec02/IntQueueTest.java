@@ -128,6 +128,7 @@ public class IntQueueTest {
         assertEquals(mQueue.size(), 0);
     }
 
+    // Structural test for ArrayIntQueue
     @Test
     public void testEnsureCapacityStructural() {
         for (int i = 1; i < 10; i++) {
@@ -136,8 +137,10 @@ public class IntQueueTest {
         assertEquals(mQueue.size(), 9);
         mQueue.dequeue();
         mQueue.enqueue(10);
-        mQueue.enqueue(11);
-        assertEquals(mQueue.size(), 10);
+        for (int j = 11; j < 15; j++) {
+            mQueue.enqueue(j);
+            assertEquals(mQueue.size(), j - 1);
+        }
         assertEquals(mQueue.peek(), testList.get(1));
     }
 }
